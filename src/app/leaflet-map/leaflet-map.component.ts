@@ -31,13 +31,13 @@ export class LeafletMapComponent implements OnInit {
     ];
 
 
-
+    //
     // const cities = [
     //   { name: 'Dhaka', lat: 23.8103, lng: 90.4125 },
     //   { name: 'Faridpur', lat: 23.5424, lng: 89.6309 },
     //   { name: 'Gazipur', lat: 24.0958, lng: 90.4125 },
-    //   { name: 'Gopalganj', lat: 26.4685, lng: 84.4433 },
-    //   { name: 'Jamalpur', lat: 25.3127, lng: 86.4906 },
+    //   { name: 'Gopalganj', lat: 23.01324, lng: 89.82261},
+    //   { name: 'Jamalpur', lat: 24.923025, lng:  89.950111 },
     //   { name: 'Kishoreganj', lat: 24.4260, lng: 90.9821 },
     //   { name: 'Madaripur', lat: 23.2393, lng: 90.1870 },
     //   { name: 'Manikganj', lat: 23.8617, lng: 90.0003 },
@@ -54,7 +54,7 @@ export class LeafletMapComponent implements OnInit {
     //   { name: 'Joypurhat', lat: 25.0947, lng: 89.0945 },
     //   { name: 'Naogaon', lat: 24.9132, lng: 88.7531 },
     //   { name: 'Natore', lat: 24.4102, lng: 89.0076 },
-    //   { name: 'Nawabganj', lat: 28.5405, lng: 79.6306 },
+    //   { name: 'Nawabganj', lat: 24.95, lng: 88.383333 },
     //   { name: 'Pabna', lat: 24.0113, lng: 89.2562 },
     //   { name: 'Rajshahi', lat: 24.3636, lng: 88.6241 },
     //   { name: 'Sirajgonj', lat: 24.3141, lng: 89.5700 },
@@ -96,10 +96,8 @@ export class LeafletMapComponent implements OnInit {
     //   { name: 'Magura', lat: 23.4855, lng: 89.4198 },
     //   { name: 'Meherpur', lat: 23.8052, lng: 88.6724 },
     //   { name: 'Narail', lat: 23.1657, lng: 89.4990 },
-    //   { name: 'Satkhira', lat: 22.3155, lng: 89.1115 }
+    //   { name: 'Satkhira', lat: 22.723406, lng: 89.075127 }
     // ];
-    //
-    //
 
 
     cities.forEach(city => {
