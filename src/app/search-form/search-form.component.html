@@ -1,0 +1,27 @@
+<div class="search-form-container">
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="genericBrand">Generic/Brand</label>
+      <input id="genericBrand" formControlName="genericBrand" placeholder="Search by generic/brand..." />
+    </div>
+    <div>
+      <label for="vendor">Vendor</label>
+      <input id="vendor" formControlName="vendor" placeholder="Search by location..." />
+    </div>
+    <div>
+      <label for="startDate">Start Date</label>
+      <input id="startDate" type="date" formControlName="startDate" />
+    </div>
+    <div>
+      <label for="endDate">End Date</label>
+      <input id="endDate" type="date" formControlName="endDate" />
+    </div>
+
+    <div class="btng">
+      <button type="submit" [disabled]="searchForm.invalid" class="search-button">Search</button>
+    </div>
+
+  </form>
+</div>
+
+
