@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import {LeafletMapComponent} from './leaflet-map/leaflet-map.component';
 import {SearchFormComponent} from './search-form/search-form.component';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -12,4 +13,5 @@ import {SearchFormComponent} from './search-form/search-form.component';
 })
 export class AppComponent {
   title = 'bangladesh';
+
 }

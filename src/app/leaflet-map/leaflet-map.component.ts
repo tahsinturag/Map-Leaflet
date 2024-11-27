@@ -20,18 +20,18 @@ export class LeafletMapComponent implements OnInit {
     }).addTo(this.map);
 
     const cities = [
-      { name: 'Dhaka', lat: 23.8103, lng: 90.4125 },
-      { name: 'Chattogram', lat: 22.3569, lng: 91.7832 },
-      { name: 'Khulna', lat: 22.8456, lng: 89.5403 },
-      { name: 'Rajshahi', lat: 24.3636, lng: 88.6241 },
-      { name: 'Sylhet', lat: 24.9045, lng: 91.8611 },
-      { name: 'Barishal', lat: 22.7010, lng: 90.3535 },
-      { name: 'Rangpur', lat: 25.7439, lng: 89.2752 },
-      { name: 'Mymensingh', lat: 24.7471, lng: 90.4203 }
+      {name: 'Dhaka', lat: 23.8103, lng: 90.4125},
+      {name: 'Chattogram', lat: 22.3569, lng: 91.7832},
+      {name: 'Khulna', lat: 22.8456, lng: 89.5403},
+      {name: 'Rajshahi', lat: 24.3636, lng: 88.6241},
+      {name: 'Sylhet', lat: 24.9045, lng: 91.8611},
+      {name: 'Barishal', lat: 22.7010, lng: 90.3535},
+      {name: 'Rangpur', lat: 25.7439, lng: 89.2752},
+      {name: 'Mymensingh', lat: 24.7471, lng: 90.4203}
     ];
 
 
-    //
+    //all districts lat lng---------------------------------
     // const cities = [
     //   { name: 'Dhaka', lat: 23.8103, lng: 90.4125 },
     //   { name: 'Faridpur', lat: 23.5424, lng: 89.6309 },
@@ -104,5 +104,13 @@ export class LeafletMapComponent implements OnInit {
       L.marker([city.lat, city.lng]).addTo(this.map)
         .bindPopup(`<b>${city.name}</b>`);
     });
+    // Use flyTo to zoom to Rangpur-------------------------
+    // const rangpur = cities.find(city => city.name === 'Rangpur');
+    // if (rangpur) {
+    //   this.map.flyTo([rangpur.lat, rangpur.lng], 10, {
+    //     animate: true,
+    //     duration: 2 // duration of the animation in seconds
+    //   });
+    // }
   }
 }
