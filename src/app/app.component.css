@@ -1,0 +1,19 @@
+.map-container {
+  position: relative;
+  height: 100vh;
+}
+
+.search-form-overlay {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  gap: 24px;
+
+}
+
+
