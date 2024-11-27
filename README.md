@@ -3,6 +3,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
 
+# after added search form
+![image](https://github.com/user-attachments/assets/17597b39-ea19-4c13-8fa1-5cb0082b064d)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
