@@ -1,10 +1,13 @@
 # Bangladesh
 ![image](https://github.com/user-attachments/assets/32385c2c-2a1a-4b4a-81d5-72a18eac0b5f)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
-
 # after added search form
 ![image](https://github.com/user-attachments/assets/17597b39-ea19-4c13-8fa1-5cb0082b064d)
+
+# after added fly effect it can zoom specific area by clicking the marker
+![image](https://github.com/user-attachments/assets/8c35d546-2286-4fd3-bd6d-6f760c50b206)
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
 
 ## Development server
 
