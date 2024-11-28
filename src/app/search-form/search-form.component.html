@@ -1,5 +1,10 @@
 <div class="search-form-container">
+  <form class="d-flex" role="search">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>  </form>
+
   <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+
     <div>
       <label for="genericBrand">Generic/Brand</label>
       <input id="genericBrand" formControlName="genericBrand" placeholder="Search by generic/brand..." />
@@ -18,10 +23,13 @@
     </div>
 
     <div class="btng">
-      <button type="submit" [disabled]="searchForm.invalid" class="search-button">Search</button>
-    </div>
+      <i class="fas fa-search"></i><button type="submit" [disabled]="searchForm.invalid" class="search-button">Search</button>
+
+
+</div>
 
   </form>
+
 </div>
 
 

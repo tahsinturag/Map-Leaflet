@@ -11,7 +11,6 @@ import L from 'leaflet';
 export class LeafletMapComponent implements OnInit {
   private map: any;
 
-  // List of cities with their names and coordinates
   private cities = [
     {name: 'Dhaka', lat: 23.8103, lng: 90.4125},
     {name: 'Chattogram', lat: 22.3569, lng: 91.7832},
@@ -93,7 +92,6 @@ export class LeafletMapComponent implements OnInit {
   //   { name: 'Satkhira', lat: 22.723406, lng: 89.075127 }
   // ];
 
-  // City markers to be added dynamically
   private cityMarkers: any[] = [];
 
   ngOnInit(): void {
@@ -105,22 +103,20 @@ export class LeafletMapComponent implements OnInit {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(this.map);
 
-    // Add a marker for each city and bind a click event to flyTo
+
     this.cities.forEach(city => {
       let marker = L.marker([city.lat, city.lng]).addTo(this.map)
         .bindPopup(`<b>${city.name}</b>`);
 
-      // Store the marker to use later if needed
+
       this.cityMarkers.push(marker);
 
-      // Add click event to each city marker to trigger the flyTo animation
       marker.on('click', () => {
-        this.flyToCity(city.lat, city.lng, 10); // Zoom level 10 for city view
+        this.flyToCity(city.lat, city.lng, 10);
       });
     });
   }
 
-  // Function to fly the map to the selected city
   flyToCity(lat: number, lng: number, zoom: number): void {
     this.map.flyTo([lat, lng], zoom, {
       duration: 1.5 // Duration of the fly animation in seconds

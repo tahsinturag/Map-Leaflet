@@ -5,7 +5,7 @@
   border-radius: 8px;
   /*max-width: 400px;*/
   margin: 0 auto;
-  height: 350px;
+  height: 450px;
   width: 352px;
 
 }
@@ -29,7 +29,8 @@
   background-color: transparent;
   border: none;
   box-shadow: none;
-  color: #FFFFFF;
+  /*color: #FFFFFF;*/
+  text-color: white;
 }
 form div {
   margin-bottom: 15px;
