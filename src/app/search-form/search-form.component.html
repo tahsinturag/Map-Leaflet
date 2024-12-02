@@ -1,35 +1,59 @@
-<div class="search-form-container">
-  <form class="d-flex" role="search">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>  </form>
-
-  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-
-    <div>
-      <label for="genericBrand">Generic/Brand</label>
-      <input id="genericBrand" formControlName="genericBrand" placeholder="Search by generic/brand..." />
-    </div>
-    <div>
-      <label for="vendor">Vendor</label>
-      <input id="vendor" formControlName="vendor" placeholder="Search by location..." />
-    </div>
-    <div>
-      <label for="startDate">Start Date</label>
-      <input id="startDate" type="date" formControlName="startDate" />
-    </div>
-    <div>
-      <label for="endDate">End Date</label>
-      <input id="endDate" type="date" formControlName="endDate" />
-    </div>
-
-    <div class="btng">
-      <i class="fas fa-search"></i><button type="submit" [disabled]="searchForm.invalid" class="search-button">Search</button>
-
-
+<div class="container  search-form">
+  <div class="modal-header header-icon mb-2">
+    <h3 class="modal-title" id="searchModalLabel">Search</h3>
+    <i
+      class="fas fa-chevron-up gap-icon"
+      style="cursor: pointer"
+      (click)="closeModal()"
+    ></i>
+  </div>
 </div>
 
+<form [formGroup]="searchForm" (ngSubmit)="searchHandler()">
+    <div class="mb-3">
+      <label for="genericBrand" class="form-label">Generic/Brand</label>
+      <input
+        type="text"
+        class="form-control form-input"
+        id="genericBrand"
+        formControlName="brand_name"
+        placeholder="Search by generic/brand..."
+        appClearInput
+      />
+    </div>
+    <div class="mb-3">
+      <label for="vendor" class="form-label">Vendor</label>
+      <input
+        type="text"
+        class="form-control form-input"
+        id="vendor"
+        formControlName="vendor_name"
+        placeholder="Search by location..."
+        appClearInput
+      />
+    </div>
+    <div class="mb-3">
+      <label for="startDate" class="form-label">Start date</label>
+      <input
+        type="date"
+        formControlName="start_date"
+        class="form-control form-input"
+        id="startDate"
+        appClearInput
+      />
+    </div>
+    <div class="mb-3">
+      <label for="endDate" class="form-label">End date</label>
+      <input
+        type="date"
+        formControlName="end_date"
+        class="form-control form-input"
+        id="endDate"
+        appClearInput
+      />
+    </div>
+    <button type="submit" class="btn btn-success w-100">
+      <i class="fas fa-search"></i> Search
+    </button>
   </form>
-
-</div>
-
 

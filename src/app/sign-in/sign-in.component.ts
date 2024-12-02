@@ -40,7 +40,6 @@ export class SignInComponent implements OnInit {
   signIn() {
     if (this.regForm.valid) {
       console.log(this.regForm.value);
-      // Add your sign-up logic here
     } else {
       this.markFormGroupTouched(this.regForm);
     }

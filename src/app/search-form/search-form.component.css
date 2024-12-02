@@ -1,58 +1,76 @@
-.search-form-container {
-  /*background-color: #f0f4f8;*/
-  background-color: #FFFFFF99;
-  padding: 20px;
-  border-radius: 8px;
-  /*max-width: 400px;*/
-  margin: 0 auto;
-  height: 450px;
-  width: 352px;
-
+.map-container {
+  position: relative;
+  height: 100vh;
 }
-.btng{
-  display: flex;
-  padding: 10px 16px 9px 8px;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
+
+.search-form-overlay {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  /* background-color: rgba(255, 255, 255, 0.8); */
+  padding: 16px;
   border-radius: 12px;
-  background-color: #34A853;
-  /*padding: 10px 20px;*/
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  gap: 24px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.show-results-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  background-color: #f9f6f3;
+  padding: 16px 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  gap: 24px;
+  width: 412px;
+  opacity: 0.9;
+}
+::ng-deep .leaflet-touch .leaflet-bar {
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background-clip: padding-box;
+  display: none;
+}
+.search-bar {
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  z-index: 1000;
+  width: 307px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 30px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input {
   border: none;
-  /*border-radius: 4px;*/
-  cursor: pointer;
-  width: 100%;
-
-
-}
-.search-button{
-  background-color: transparent;
-  border: none;
-  box-shadow: none;
-  /*color: #FFFFFF;*/
-  text-color: white;
-}
-form div {
-  margin-bottom: 15px;
+  outline: none;
+  background: transparent;
+  flex-grow: 1;
 }
 
-/*label {*/
-/*  display: block;*/
-/*  margin-bottom: 5px;*/
-/*  font-weight: bold;*/
-/*}*/
-
-input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-top: 5px;
+.search-bar .icon {
+  font-size: 20px;
+  color: gray;
 }
 
+.search-bar input::placeholder {
+  color: gray;
+}
 
-/*button:disabled {*/
-/*  background-color: #ffffff;*/
-/*  cursor: not-allowed;*/
-/*}*/
+.gap-icon {
+  margin-left: 13rem;
+}
+
 

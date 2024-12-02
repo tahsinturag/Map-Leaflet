@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import L from 'leaflet';
 
 @Component({
@@ -10,7 +10,6 @@ import L from 'leaflet';
 })
 export class LeafletMapComponent implements OnInit {
   private map: any;
-
   private cities = [
     {name: 'Dhaka', lat: 23.8103, lng: 90.4125},
     {name: 'Chattogram', lat: 22.3569, lng: 91.7832},
@@ -21,7 +20,6 @@ export class LeafletMapComponent implements OnInit {
     {name: 'Rangpur', lat: 25.7439, lng: 89.2752},
     {name: 'Mymensingh', lat: 24.7471, lng: 90.4203}
   ];
-
 
 
   //all districts lat lng---------------------------------
@@ -92,30 +90,27 @@ export class LeafletMapComponent implements OnInit {
   //   { name: 'Satkhira', lat: 22.723406, lng: 89.075127 }
   // ];
 
+
   private cityMarkers: any[] = [];
 
   ngOnInit(): void {
     // Initialize map and set default view
-    this.map = L.map('map').setView([23.8103, 90.4125], 6);
-
+    this.map = L.map('map').setView([23.8103, 90.4125], 7);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(this.map);
 
-
     this.cities.forEach(city => {
       let marker = L.marker([city.lat, city.lng]).addTo(this.map)
         .bindPopup(`<b>${city.name}</b>`);
-
-
       this.cityMarkers.push(marker);
-
       marker.on('click', () => {
         this.flyToCity(city.lat, city.lng, 10);
       });
     });
   }
+
 
   flyToCity(lat: number, lng: number, zoom: number): void {
     this.map.flyTo([lat, lng], zoom, {
@@ -123,3 +118,6 @@ export class LeafletMapComponent implements OnInit {
     });
   }
 }
+
+
+

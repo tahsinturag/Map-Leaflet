@@ -1,28 +1,62 @@
-import { Component } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { HelperService } from '../core/services/helper.service';
+import { ClearInputDirective } from '../shared/directive/clear-input.directive';
+
 
 @Component({
   selector: 'app-search-form',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule, ClearInputDirective],
   templateUrl: './search-form.component.html',
-  styleUrls: ['./search-form.component.css']
+  styleUrl: './search-form.component.css',
 })
 export class SearchFormComponent {
-  searchForm: FormGroup;
+  @Output() closeModalEmitter = new EventEmitter();
+  @Output() searchParamEmitter = new EventEmitter();
+  public searchForm!: FormGroup;
+  public tabType: string = '';
 
-  constructor(private fb: FormBuilder) {
-    this.searchForm = this.fb.group({
-      genericBrand: ['', Validators.required],
-      vendor: ['', Validators.required],
-      startDate: ['', Validators.required],
-      endDate: ['', Validators.required]
-    });
+  constructor(
+    private formBuilder: FormBuilder,
+    private helperService: HelperService
+  ) {}
+
+  ngOnInit() {
+    this.tabType = this.helperService.getTabItem();
+    this.initializeSearchForm();
   }
 
-  onSubmit() {
+  initializeSearchForm() {
+    this.searchForm = this.formBuilder.group({
+      brand_name: [''],
+      vendor_name: [''],
+      start_date: [''],
+      end_date: [''],
+    });
+  }
+  searchHandler() {
+    console.log('searchHandler', this.searchForm.value);
     if (this.searchForm.valid) {
       console.log(this.searchForm.value);
+      this.searchParamEmitter.emit(this.searchForm.value);
+
+      this.helperService.setTabItem(this.tabType || 'demographic');
+
+
     }
+  }
+
+  openModal(modalId: string) {
+    console.log('object');
+    const modalElement = document.getElementById(modalId);
+    if (modalElement) {
+
+    }
+  }
+  closeModal(): void {
+    console.log('object');
+    this.closeModalEmitter.emit();
   }
 }
