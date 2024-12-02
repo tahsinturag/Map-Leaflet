@@ -1,2 +1,13 @@
 <div id="map" style="height: 100%;"></div>
 
+<div class="search-form-overlay">
+  @if (!isOpenSearchForm) {
+    <div class="search-bar" id="searchBar">
+      <input type="text" placeholder="Search" readonly (click)="openModal()" />
+      <i class="fas fa-search"></i>
+    </div>
+  } @else {
+    <app-search-form>
+   </app-search-form>
+  }
+</div>

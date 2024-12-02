@@ -1,14 +1,18 @@
 import {Component, OnInit} from '@angular/core';
 import L from 'leaflet';
+import { SearchFormComponent } from '../search-form/search-form.component';
+
 
 @Component({
   selector: 'app-leaflet-map',
   standalone: true,
-  imports: [],
+  imports: [ SearchFormComponent],
   templateUrl: './leaflet-map.component.html',
   styleUrls: ['./leaflet-map.component.css']
 })
+
 export class LeafletMapComponent implements OnInit {
+  public isOpenSearchForm: boolean = false;
   private map: any;
   private cities = [
     {name: 'Dhaka', lat: 23.8103, lng: 90.4125},
@@ -94,6 +98,7 @@ export class LeafletMapComponent implements OnInit {
   private cityMarkers: any[] = [];
 
   ngOnInit(): void {
+
     // Initialize map and set default view
     this.map = L.map('map').setView([23.8103, 90.4125], 7);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -117,7 +122,29 @@ export class LeafletMapComponent implements OnInit {
       duration: 1.5 // Duration of the fly animation in seconds
     });
   }
+
+  openModal() {
+    this.isOpenSearchForm = true;
+  }
+
+  closeModal() {
+    this.isOpenSearchForm = false;
+  }
 }
+  // searchHandler(searchData: any) {
+  //   console.log('searchData', searchData);
+  //   // this.mapService.search(searchData).subscribe({
+  //   //   next: (response) => {
+  //   //     console.log('response', response);
+  //       // this.storeDivisionsList = response;
+  //       // this.divisionsList = response;
+  //     },
+  //     error: (error) => {
+  //       console.error(error);
+  //     },
+  //   });
+//   }
+// }
 
 
 
