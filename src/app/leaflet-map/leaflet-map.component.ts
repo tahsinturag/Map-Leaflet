@@ -17,7 +17,7 @@ export class LeafletMapComponent implements OnInit {
   private map: any;
   private cities = [
     {name: 'Dhaka', lat: 23.8103, lng: 90.4125},
-    {name: 'Chattogram', lat: 22.3569, lng: 91.7832},
+    {name: 'Chittagong', lat: 22.3569, lng: 91.7832},
     {name: 'Khulna', lat: 22.8456, lng: 89.5403},
     {name: 'Rajshahi', lat: 24.3636, lng: 88.6241},
     {name: 'Sylhet', lat: 24.9045, lng: 91.8611},
@@ -28,7 +28,7 @@ export class LeafletMapComponent implements OnInit {
 
 
   private cityMarkers: any[] = [];
-
+  public temp: any;
   constructor(private postService: PostService) {
   }
 
@@ -46,6 +46,7 @@ export class LeafletMapComponent implements OnInit {
         .bindPopup(`<b>${city.name}</b>`);
       this.cityMarkers.push(marker);
       marker.on('click', () => {
+        this.temp = city.name;
         this.flyToCity(city.lat, city.lng, 8);
       });
     });
@@ -57,33 +58,52 @@ export class LeafletMapComponent implements OnInit {
       duration: 1.5 // Duration of the fly animation in seconds
     });
 
-    this.postService.getPosts().subscribe({
-      next: (data: any)=> {
-        // console.log(data.geoData?.features[0].geometry.coordinates)
-        // this.posts = data.geoData?.features[0].geometry.coordinates;
-        console.log(data)
-
+    // this.postService.getPosts(city.name).subscribe({
+    //   next: (data: any)=> {
+    //     // console.log(data.geoData?.features[0].geometry.coordinates)
+    //     // this.posts = data.geoData?.features[0].geometry.coordinates;
+    //     console.log(data)
+    //
+    //     L.geoJSON(data.geoData, {
+    //       style: function (feature) {
+    //         return {
+    //           color: "red", // Line color
+    //           weight: 2, // Line thickness
+    //           opacity: 0.7, // Line opacity
+    //         };
+    //       },
+    //       onEachFeature: function (feature, layer) {
+    //         if (feature.properties && feature.properties.name_en) {
+    //           layer.bindPopup("<b>" + feature.properties.name_en + "</b>");
+    //         }
+    //       },
+    //     }).addTo(this.map);
+    //   },
+    //   error: (err:any)=>{
+    //     console.log(err);
+    //   }
+    // });
+    this.postService.getPosts(this.temp).subscribe({
+      next: (data: any) => {
+        console.log(data);
         L.geoJSON(data.geoData, {
           style: function (feature) {
             return {
-              color: "red", // Line color
-              weight: 2, // Line thickness
-              opacity: 0.7, // Line opacity
+              color: 'red',
+              weight: 2,
+              opacity: 0.7
             };
-          },
-          onEachFeature: function (feature, layer) {
-            if (feature.properties && feature.properties.name_en) {
-              layer.bindPopup("<b>" + feature.properties.name_en + "</b>");
-            }
-          },
+          }
         }).addTo(this.map);
       },
-      error: (err:any)=>{
-        console.log(err);
+      error: (err) => {
+        console.error('Error fetching data', err);
       }
     });
 
+
   }
+
 
   openModal() {
     this.isOpenSearchForm = true;
