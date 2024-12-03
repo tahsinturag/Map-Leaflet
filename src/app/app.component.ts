@@ -29,14 +29,15 @@ export class AppComponent {
   // posts:Post[]=[];
   posts:any =[];
   constructor() {
-    this.postService.getPosts().subscribe({
-      next: (data: any)=> {
-        this.posts = data;
-      },
-      error: (err:any)=>{
-        console.log(err);
-      }
-    });
+    // this.postService.getPosts().subscribe({
+    //   next: (data: any)=> {
+    //     console.log(data.geoData?.features[0].geometry.coordinates)
+    //     this.posts = data.geoData?.features[0].geometry.coordinates;
+    //   },
+    //   error: (err:any)=>{
+    //     console.log(err);
+    //   }
+    // });
   }
 
 
