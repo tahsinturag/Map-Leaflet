@@ -53,14 +53,13 @@ export class LeafletMapComponent implements OnInit {
   }
 
 
-  private currentLayer: any; // To keep track of the current GeoJSON layer
+  private currentLayer: any;
 
   flyToCity(lat: number, lng: number, zoom: number): void {
     this.map.flyTo([lat, lng], zoom, {
-      duration: 1.5 // Duration of the fly animation in seconds
+      duration: 0.5
     });
 
-    // Fetch and display GeoJSON data for the selected city
     this.postService.getPosts(this.temp).subscribe({
       next: (data: any) => {
         console.log(data);
@@ -70,7 +69,6 @@ export class LeafletMapComponent implements OnInit {
           this.map.removeLayer(this.currentLayer);
         }
 
-        // Add the new GeoJSON layer
         this.currentLayer = L.geoJSON(data.geoData, {
           style: function (feature) {
             return {
@@ -83,11 +81,21 @@ export class LeafletMapComponent implements OnInit {
             };
           }
         }).addTo(this.map);
+
+        // Fetch the zoom level from the JSON data
+        const divisionZoom = data.zoomVal || zoom;
+        const divisionCoordinates = data.centerCoordinates || [lat, lng];
+
+        // Zoom and center the map according to the fetched data
+        this.map.flyTo(divisionCoordinates, divisionZoom, {
+          duration: 0.5 // Duration of the fly animation in seconds
+        });
       },
       error: (err) => {
         console.error('Error fetching data', err);
       }
     });
+
   }
 
 
