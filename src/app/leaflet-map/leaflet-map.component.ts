@@ -53,45 +53,33 @@ export class LeafletMapComponent implements OnInit {
   }
 
 
+  private currentLayer: any; // To keep track of the current GeoJSON layer
+
   flyToCity(lat: number, lng: number, zoom: number): void {
     this.map.flyTo([lat, lng], zoom, {
       duration: 1.5 // Duration of the fly animation in seconds
     });
 
-    // this.postService.getPosts(city.name).subscribe({
-    //   next: (data: any)=> {
-    //     // console.log(data.geoData?.features[0].geometry.coordinates)
-    //     // this.posts = data.geoData?.features[0].geometry.coordinates;
-    //     console.log(data)
-    //
-    //     L.geoJSON(data.geoData, {
-    //       style: function (feature) {
-    //         return {
-    //           color: "red", // Line color
-    //           weight: 2, // Line thickness
-    //           opacity: 0.7, // Line opacity
-    //         };
-    //       },
-    //       onEachFeature: function (feature, layer) {
-    //         if (feature.properties && feature.properties.name_en) {
-    //           layer.bindPopup("<b>" + feature.properties.name_en + "</b>");
-    //         }
-    //       },
-    //     }).addTo(this.map);
-    //   },
-    //   error: (err:any)=>{
-    //     console.log(err);
-    //   }
-    // });
+    // Fetch and display GeoJSON data for the selected city
     this.postService.getPosts(this.temp).subscribe({
       next: (data: any) => {
         console.log(data);
-        L.geoJSON(data.geoData, {
+
+        // Remove the previous layer, if it exists
+        if (this.currentLayer) {
+          this.map.removeLayer(this.currentLayer);
+        }
+
+        // Add the new GeoJSON layer
+        this.currentLayer = L.geoJSON(data.geoData, {
           style: function (feature) {
             return {
-              color: 'red',
-              weight: 2,
-              opacity: 0.7
+              color: 'blue',
+              weight: 1.5,
+              // opacity: 0.2
+              fillOpacity: 0.2,
+              // fillColor: "#ff7800",
+              fillColor: "#6386d9",
             };
           }
         }).addTo(this.map);
@@ -100,9 +88,8 @@ export class LeafletMapComponent implements OnInit {
         console.error('Error fetching data', err);
       }
     });
-
-
   }
+
 
 
   openModal() {
