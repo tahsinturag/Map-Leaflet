@@ -31,8 +31,7 @@ export class SearchFormComponent implements OnInit {
 
   ngOnInit() {
     this.initializeSearchForm();
-
-    // Handle input changes for fetching suggestions
+    //  for fetching suggestions
     this.searchForm.get('brand_name')?.valueChanges.subscribe((input) => {
       if (input && input.length > 0) {
         this.getSuggestions(input);
