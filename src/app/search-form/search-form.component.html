@@ -1,70 +1,3 @@
-<!--<div class="container search-form">-->
-<!--  <form [formGroup]="searchForm" (ngSubmit)="searchHandler()">-->
-<!--    <div class="mb-3">-->
-<!--      <label for="genericBrand" class="form-label">Generic/Brand</label>-->
-<!--      <input-->
-<!--        type="text"-->
-<!--        class="form-control form-input"-->
-<!--        id="genericBrand"-->
-<!--        formControlName="brand_name"-->
-<!--        placeholder="Search by generic/brand..."-->
-<!--        appClearInput-->
-<!--      />-->
-<!--      &lt;!&ndash; Suggestions show if there any &ndash;&gt;-->
-<!--      @if (suggestions.length > 0) {-->
-<!--        <div class="suggestions-list">-->
-<!--          <ul>-->
-<!--            &lt;!&ndash; Iterate over suggestions &ndash;&gt;-->
-<!--            @for (suggestion of suggestions; track suggestion) {-->
-<!--              <li (click)="selectSuggestion(suggestion)">-->
-<!--                {{ suggestion.genericName }}-->
-<!--                &lt;!&ndash; Display suggestion text &ndash;&gt;-->
-<!--              </li>-->
-<!--            }-->
-<!--          </ul>-->
-<!--        </div>-->
-<!--      }-->
-<!--    </div>-->
-
-<!--    <div class="mb-3">-->
-<!--      <label for="vendor" class="form-label">Vendor</label>-->
-<!--      <input-->
-<!--        type="text"-->
-<!--        class="form-control form-input"-->
-<!--        id="vendor"-->
-<!--        formControlName="vendor_name"-->
-<!--        placeholder="Search by location..."-->
-<!--        appClearInput-->
-<!--      />-->
-<!--    </div>-->
-<!--    <div class="mb-3">-->
-<!--      <label for="startDate" class="form-label">Start date</label>-->
-<!--      <input-->
-<!--        type="date"-->
-<!--        formControlName="start_date"-->
-<!--        class="form-control form-input"-->
-<!--        id="startDate"-->
-<!--        appClearInput-->
-<!--      />-->
-<!--    </div>-->
-<!--    <div class="mb-3">-->
-<!--      <label for="endDate" class="form-label">End date</label>-->
-<!--      <input-->
-<!--        type="date"-->
-<!--        formControlName="end_date"-->
-<!--        class="form-control form-input"-->
-<!--        id="endDate"-->
-<!--        appClearInput-->
-<!--      />-->
-<!--    </div>-->
-<!--    <button type="submit" class="btn btn-success w-100">-->
-<!--      <i class="fas fa-search"></i> Search-->
-<!--    </button>-->
-<!--  </form>-->
-<!--</div>-->
-
-
-
 <!--using bootstrap autocomplete-->
 
 <div class="container search-form">
@@ -78,16 +11,18 @@
           id="genericBrand"
           formControlName="brand_name"
           placeholder="Search by generic/brand..."
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
           autocomplete="off"
-          appClearInput
+          (focus)="showSuggestion = suggestions.length > 0"
+        (blur)="onBlur()"
+        appClearInput
         />
         <div class="dropdown-menu" [class.show]="showSuggestion">
           @for (suggestion of suggestions; track suggestion) {
-            <a class="dropdown-item"
-               href="javascript:void(0)"
-               (click)="selectSuggestion(suggestion)">
+            <a
+              class="dropdown-item"
+              href="javascript:void(0)"
+              (click)="selectSuggestion(suggestion)"
+            >
               {{ suggestion.genericName }}
             </a>
           }
@@ -95,6 +30,7 @@
       </div>
     </div>
 
+<!--now need to do same for the vendor for more-->
     <div class="mb-3">
       <label for="vendor" class="form-label">Vendor</label>
       <input
