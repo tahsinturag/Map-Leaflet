@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import L from 'leaflet';
-import { SearchFormComponent } from '../search-form/search-form.component';
+import {SearchFormComponent} from '../search-form/search-form.component';
 import {PostService} from '../post.service';
 
 
 @Component({
   selector: 'app-leaflet-map',
   standalone: true,
-  imports: [ SearchFormComponent],
+  imports: [SearchFormComponent],
   templateUrl: './leaflet-map.component.html',
   styleUrls: ['./leaflet-map.component.css']
 })
@@ -29,6 +29,7 @@ export class LeafletMapComponent implements OnInit {
 
   private cityMarkers: any[] = [];
   public temp: any;
+
   constructor(private postService: PostService) {
   }
 
@@ -59,7 +60,7 @@ export class LeafletMapComponent implements OnInit {
     this.map.flyTo([lat, lng], zoom, {
       duration: 0.5
     });
-
+    // API call
     this.postService.getPosts(this.temp).subscribe({
       next: (data: any) => {
         console.log(data);
@@ -74,9 +75,7 @@ export class LeafletMapComponent implements OnInit {
             return {
               color: 'blue',
               weight: 1.5,
-              // opacity: 0.2
               fillOpacity: 0.2,
-              // fillColor: "#ff7800",
               fillColor: "#6386d9",
             };
           }
@@ -99,7 +98,6 @@ export class LeafletMapComponent implements OnInit {
   }
 
 
-
   openModal() {
     this.isOpenSearchForm = true;
   }
@@ -108,18 +106,19 @@ export class LeafletMapComponent implements OnInit {
     this.isOpenSearchForm = false;
   }
 }
-  // searchHandler(searchData: any) {
-  //   console.log('searchData', searchData);
-  //   // this.mapService.search(searchData).subscribe({
-  //   //   next: (response) => {
-  //   //     console.log('response', response);
-  //       // this.storeDivisionsList = response;
-  //       // this.divisionsList = response;
-  //     },
-  //     error: (error) => {
-  //       console.error(error);
-  //     },
-  //   });
+
+// searchHandler(searchData: any) {
+//   console.log('searchData', searchData);
+//   // this.mapService.search(searchData).subscribe({
+//   //   next: (response) => {
+//   //     console.log('response', response);
+//       // this.storeDivisionsList = response;
+//       // this.divisionsList = response;
+//     },
+//     error: (error) => {
+//       console.error(error);
+//     },
+//   });
 //   }
 // }
 

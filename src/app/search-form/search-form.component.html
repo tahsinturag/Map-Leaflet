@@ -1,15 +1,5 @@
-<div class="container  search-form">
-  <div class="modal-header header-icon mb-2">
-    <h3 class="modal-title" id="searchModalLabel">Search</h3>
-    <i
-      class="fas fa-chevron-up gap-icon"
-      style="cursor: pointer"
-      (click)="closeModal()"
-    ></i>
-  </div>
-</div>
-<!--padding: 16px;-->
-<form [formGroup]="searchForm" (ngSubmit)="searchHandler()">
+<div class="container search-form">
+  <form [formGroup]="searchForm" (ngSubmit)="searchHandler()">
     <div class="mb-3">
       <label for="genericBrand" class="form-label">Generic/Brand</label>
       <input
@@ -20,7 +10,22 @@
         placeholder="Search by generic/brand..."
         appClearInput
       />
+      <!-- Suggestions show if there any -->
+      @if (suggestions.length > 0) {
+        <div class="suggestions-list">
+          <ul>
+            <!-- Iterate over suggestions -->
+            @for (suggestion of suggestions; track suggestion) {
+              <li (click)="selectSuggestion(suggestion)">
+                {{ suggestion.genericName }}
+                <!-- Display suggestion text -->
+              </li>
+            }
+          </ul>
+        </div>
+      }
     </div>
+
     <div class="mb-3">
       <label for="vendor" class="form-label">Vendor</label>
       <input
@@ -56,4 +61,4 @@
       <i class="fas fa-search"></i> Search
     </button>
   </form>
-
+</div>

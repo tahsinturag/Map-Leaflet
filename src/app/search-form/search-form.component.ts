@@ -1,33 +1,47 @@
-import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { HelperService } from '../core/services/helper.service';
-import { ClearInputDirective } from '../shared/directive/clear-input.directive';
+import { PostService } from '../post.service';
 
+// Interface for a generic suggestion object
+interface GenericSuggestion {
+  id: number;
+  genericName: string;
+}
 
 @Component({
   selector: 'app-search-form',
-  standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, ClearInputDirective],
   templateUrl: './search-form.component.html',
-  styleUrl: './search-form.component.css',
+  styleUrls: ['./search-form.component.css'],
+  standalone: true,
+  imports: [
+    ReactiveFormsModule
+  ]
 })
 export class SearchFormComponent {
-  @Output() closeModalEmitter = new EventEmitter();
-  @Output() searchParamEmitter = new EventEmitter();
+  @Output() closeModalEmitter = new EventEmitter<void>();
+  @Output() searchParamEmitter = new EventEmitter<any>();
   public searchForm!: FormGroup;
-  public tabType: string = '';
+  public suggestions: GenericSuggestion[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
-    private helperService: HelperService
+    private postService: PostService
   ) {}
 
   ngOnInit() {
-    this.tabType = this.helperService.getTabItem();
     this.initializeSearchForm();
+
+    // Subscribe to changes in the 'brand_name' input field to fetch suggestions
+    this.searchForm.get('brand_name')?.valueChanges.subscribe((input) => {
+      if (input && input.length > 0) {
+        this.getSuggestions(input);
+      } else {
+        this.suggestions = [];
+      }
+    });
   }
 
+  // Initialize the search form with default values
   initializeSearchForm() {
     this.searchForm = this.formBuilder.group({
       brand_name: [''],
@@ -36,27 +50,28 @@ export class SearchFormComponent {
       end_date: [''],
     });
   }
+
+  // Fetch suggestions from the server based on query input
+  getSuggestions(query: string) {
+    this.postService.getGenericSuggestions(query).subscribe((response: GenericSuggestion[]) => {
+      this.suggestions = response;
+    });
+  }
+
+  // Select a suggestion from the dropdown and populate the 'brand_name' input field
+  selectSuggestion(suggestion: GenericSuggestion) {
+    this.searchForm.get('brand_name')?.setValue(suggestion.genericName);
+    this.suggestions = [];
+  }
+
+  // Handle form submission for searching
   searchHandler() {
-    console.log('searchHandler', this.searchForm.value);
     if (this.searchForm.valid) {
-      console.log(this.searchForm.value);
       this.searchParamEmitter.emit(this.searchForm.value);
-
-      this.helperService.setTabItem(this.tabType || 'demographic');
-
-
     }
   }
 
-  openModal(modalId: string) {
-    console.log('object');
-    const modalElement = document.getElementById(modalId);
-    if (modalElement) {
-
-    }
-  }
   closeModal(): void {
-    console.log('object');
     this.closeModalEmitter.emit();
   }
 }
