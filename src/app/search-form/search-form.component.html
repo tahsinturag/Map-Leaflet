@@ -13,8 +13,8 @@
           placeholder="Search by generic/brand..."
           autocomplete="off"
           (focus)="showSuggestion = suggestions.length > 0"
-        (blur)="onBlur('generic')"
-        appClearInput
+          (blur)="onBlur('generic')"
+          appClearInput
         />
         <div class="dropdown-menu" [class.show]="showSuggestion">
           @for (suggestion of suggestions; track suggestion) {
@@ -30,7 +30,7 @@
       </div>
     </div>
 
-<!--for vendor-->
+    <!--for vendor-->
     <div class="mb-3">
       <label for="vendor" class="form-label">Vendor</label>
       <div class="dropdown">
@@ -48,11 +48,11 @@
         <div class="dropdown-menu" [class.show]="showVendorSuggestion">
           @for (suggestion of vendorSuggestions; track suggestion) {
             <a
-            class="dropdown-item"
+              class="dropdown-item"
               href="javascript:void(0)"
               (click)="selectVendorSuggestion(suggestion)"
-              >
-            {{ suggestion.vendorName }}
+            >
+              {{ suggestion.vendorName }}
             </a>
           }
         </div>
@@ -84,4 +84,3 @@
     </button>
   </form>
 </div>
-

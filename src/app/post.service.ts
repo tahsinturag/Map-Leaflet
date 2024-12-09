@@ -16,14 +16,9 @@ interface VendorSuggestion {
 export class PostService {
   // Base URLs for API endpoints
   private apiUrl = 'http://192.168.0.172:8083/api/division/boundary?name=';
-
   private genericUrl = 'http://192.168.0.172:8083/api/generic/search?prefix=';
-
-  // need to work with this
   private vendorUrl = 'http://192.168.0.172:8083/api/vendor/search?prefix=';
-
-
-  private demographicUrl = 'http://192.168.0.109:8083/api/sales-info/demographic';
+  private demographicUrl = 'http://192.168.0.172:8083/api/sales-info/demographic';
 
   constructor(private http: HttpClient) {}
   //for boundary region

@@ -20,17 +20,17 @@
               : ''
             : ''
         "
-          >
-        <td style="color: #282b31; font-size: 14px">{{ item?.name }}</td>
-        <td style="text-align: right; font-size: 14px; font-weight: 700">
-          @if (tableTabType !== "market_share") {
-            <ng-container>৳</ng-container>
-          }
-          {{ formatNumber(item?.amount ?? 0) }}
-          @if (tableTabType === "market_share") {
-            <ng-container>%</ng-container>
-          }
-        </td>
+        >
+          <td style="color: #282b31; font-size: 14px">{{ item?.name }}</td>
+          <td style="text-align: right; font-size: 14px; font-weight: 700">
+            @if (tableTabType !== "market_share") {
+              <ng-container>৳</ng-container>
+            }
+            {{ formatNumber(item?.amount ?? 0) }}
+            @if (tableTabType === "market_share") {
+              <ng-container>%</ng-container>
+            }
+          </td>
         </tr>
       }
     </tbody>
