@@ -16,6 +16,8 @@
 ![image](https://github.com/user-attachments/assets/024c3981-76dd-42b4-84e4-20984ed8baf8)
 ![image](https://github.com/user-attachments/assets/d406b2bb-4cc5-4557-bbe6-d74de88fcd06)
 
+# after demographic view
+![image](https://github.com/user-attachments/assets/094e37fb-6e89-4acb-bb77-d68970c07640)
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
