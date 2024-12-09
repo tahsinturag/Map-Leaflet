@@ -1,5 +1,5 @@
 <!--using bootstrap autocomplete-->
-
+<!--for generic/brand-->
 <div class="container search-form">
   <form [formGroup]="searchForm" (ngSubmit)="searchHandler()">
     <div class="mb-3">
@@ -13,7 +13,7 @@
           placeholder="Search by generic/brand..."
           autocomplete="off"
           (focus)="showSuggestion = suggestions.length > 0"
-        (blur)="onBlur()"
+        (blur)="onBlur('generic')"
         appClearInput
         />
         <div class="dropdown-menu" [class.show]="showSuggestion">
@@ -30,18 +30,35 @@
       </div>
     </div>
 
-<!--now need to do same for the vendor for more-->
+<!--for vendor-->
     <div class="mb-3">
       <label for="vendor" class="form-label">Vendor</label>
-      <input
-        type="text"
-        class="form-control form-input"
-        id="vendor"
-        formControlName="vendor_name"
-        placeholder="Search by location..."
-        appClearInput
-      />
+      <div class="dropdown">
+        <input
+          type="text"
+          class="form-control form-input dropdown-toggle"
+          id="vendor"
+          formControlName="vendor_name"
+          placeholder="Search by vendor..."
+          autocomplete="off"
+          (focus)="showVendorSuggestion = vendorSuggestions.length > 0"
+          (blur)="onBlur('vendor')"
+          appClearInput
+        />
+        <div class="dropdown-menu" [class.show]="showVendorSuggestion">
+          @for (suggestion of vendorSuggestions; track suggestion) {
+            <a
+            class="dropdown-item"
+              href="javascript:void(0)"
+              (click)="selectVendorSuggestion(suggestion)"
+              >
+            {{ suggestion.vendorName }}
+            </a>
+          }
+        </div>
+      </div>
     </div>
+
     <div class="mb-3">
       <label for="startDate" class="form-label">Start date</label>
       <input
