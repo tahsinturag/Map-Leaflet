@@ -7,12 +7,13 @@ import {DhakaComponent} from './dhaka/dhaka.component';
 import {PostService} from './post.service';
 import {FormBuilder} from '@angular/forms';
 import {CommonModule} from '@angular/common';
+import {ShowResultsComponent} from './show-results/show-results.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LeafletMapComponent, SearchFormComponent, SignInComponent, DhakaComponent],
+  imports: [RouterOutlet, LeafletMapComponent, SearchFormComponent, SignInComponent, DhakaComponent, ShowResultsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
