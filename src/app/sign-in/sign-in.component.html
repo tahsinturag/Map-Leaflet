@@ -1,84 +1,48 @@
-<div class="container">
-  <div class="form-container">
-    <div class="form-background">
-      <div class="form-inner">
-        <span class="form-title">Sign in </span>
-        <form [formGroup]="regForm" (ngSubmit)="signIn()">
-          <div class="form-field">
-            <label for="userName">UserName</label>
-            <input
-              formControlName="userName"
-              type="text"
-              name="username"
-              id="userName"
-            >
-            @if (regForm.get('userName')?.touched && regForm.get('userName')?.invalid) {
-              <div class="error-message">
-                @if (regForm.get('userName')?.errors?.['required']) {
-                  <span>User name is required</span>
-                }
-                @if (regForm.get('userName')?.errors?.['minlength']) {
-                  <span>User name must be at least 4 characters long</span>
-                }
-                @if (regForm.get('userName')?.errors?.['maxlength']) {
-                  <span>User name must not exceed 8 characters</span>
-                }
-
-          </div>
-          }
-      </div>
-      <div class="form-field">
-        <label for="email">Email</label>
+<div class="sign-in-container">
+  <div class="sign-in-box">
+    <div class="sign-box">
+      <h1>Sign in</h1>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <!-- Email Field -->
+        <label for="email">Enter your username or email address</label>
         <input
-          formControlName="email"
-          type="email"
-          name="email"
           id="email"
-        >
-        @if (regForm.get('email')?.touched && regForm.get('email')?.invalid) {
+          type="email"
+          [formControl]="form.controls.email"
+          placeholder="Enter your email address"
+        />
+        @if (emailIsInvalid) {
           <div class="error-message">
-            @if (regForm.get('email')?.errors?.['required']) {
-              <span>Email is required</span>
-            }
-            @if (regForm.get('email')?.errors?.['email']) {
-              <span>Please enter a valid email address</span>
-            }
-
+            <span>Please enter a valid email address</span>
+          </div>
+        }
       </div>
-      }
-    </div>
-    <div class="form-field">
-      <label for="password">Password</label>
-      <input
-        formControlName="password"
-        type="password"
-        name="password"
-        id="password"
-      >
-      @if (regForm.get('password')?.touched && regForm.get('password')?.invalid) {
-        <div class="error-message">
-          @if (regForm.get('password')?.errors?.['required']) {
-            <span>Password is required</span>
-          }
-          @if (regForm.get('password')?.errors?.['minlength']) {
+
+      <div class="input-group">
+        <!-- Password Field -->
+        <label for="password">Enter your Password</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="Enter your Password"
+        />
+        @if (passwordIsInvalid) {
+          <div class="error-message">
             <span>Password must be at least 6 characters long</span>
-          }
+          </div>
+        }
+      </div>
+      <div class="forgot-password">
+        <a href="#" class="forgot-link">Forgot Password?</a>
+      </div>
 
-    </div>
-    }
+      <div class="btn-container">
+        <button class="sign-in-button">Sign In</button>
+      </div>
+      <div class="bg"></div>
+    </form>
   </div>
-  <div class="form-field">
-    <button
-      type="submit"
-      class="submit-button"
-      [disabled]="regForm.invalid"
-    >
-      Submit
-    </button>
-  </div>
-  </form>
 </div>
-</div>
-</div>
-</div>
-
