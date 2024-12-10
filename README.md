@@ -15,6 +15,10 @@
 # call the API and get the boundary for specific division after clicking the marker
 ![image](https://github.com/user-attachments/assets/024c3981-76dd-42b4-84e4-20984ed8baf8)
 ![image](https://github.com/user-attachments/assets/d406b2bb-4cc5-4557-bbe6-d74de88fcd06)
+# shows generic or brands suggestion through API call
+![image](https://github.com/user-attachments/assets/281e0af3-c2c3-4dd4-91c2-bcecfcf41039)
+# shows vendor suggestion through API call
+![image](https://github.com/user-attachments/assets/c9b4f23c-3156-4df0-8a25-f47d76d974a5)
 
 # after demographic view
 ![image](https://github.com/user-attachments/assets/094e37fb-6e89-4acb-bb77-d68970c07640)
