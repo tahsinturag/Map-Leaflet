@@ -81,11 +81,8 @@ export class LeafletMapComponent implements OnInit {
           }
         }).addTo(this.map);
 
-        // Fetch the zoom level from the JSON data
         const divisionZoom = data.zoomVal || zoom;
         const divisionCoordinates = data.centerCoordinates || [lat, lng];
-
-        // Zoom and center the map according to the fetched data
         this.map.flyTo(divisionCoordinates, divisionZoom, {
           duration: 0.5 // Duration of the fly animation in seconds
         });

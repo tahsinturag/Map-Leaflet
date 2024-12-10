@@ -2,20 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-// Add vendor suggestion interface
+// vendor suggestion interface
 interface VendorSuggestion {
   id: number;
   vendorName: string;
 }
 
-// Define a constant for the base API URL
 const BASE_API_URL = 'http://192.168.0.109:8083/api/';
 // const BASE_API_URL = 'http://192.168.0.172:8083/api/';
 @Injectable({
   providedIn: 'root',
 })
 export class PostService {
-  // Base URLs for API endpoints
+  // API endpoints
   private boundaryUrl = `${BASE_API_URL}division/boundary?name=`;
   private genericUrl = `${BASE_API_URL}generic/search?prefix=`;
   private vendorUrl = `${BASE_API_URL}vendor/search?prefix=`;

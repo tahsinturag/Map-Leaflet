@@ -3,7 +3,6 @@ import { RouterOutlet } from '@angular/router';
 import {LeafletMapComponent} from './leaflet-map/leaflet-map.component';
 import {SearchFormComponent} from './search-form/search-form.component';
 import {SignInComponent} from './sign-in/sign-in.component';
-import {DhakaComponent} from './dhaka/dhaka.component';
 import {PostService} from './post.service';
 import {FormBuilder} from '@angular/forms';
 import {CommonModule} from '@angular/common';
@@ -13,7 +12,7 @@ import {ShowResultsComponent} from './show-results/show-results.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LeafletMapComponent, SearchFormComponent, SignInComponent, DhakaComponent, ShowResultsComponent],
+  imports: [RouterOutlet, LeafletMapComponent, SearchFormComponent, SignInComponent, ShowResultsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

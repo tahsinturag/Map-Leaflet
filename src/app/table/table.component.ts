@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { DivisionListView } from '../leaflet-map/models/division.models';
+// import { DivisionListView } from '../leaflet-map/models/division.models';
 @Component({
   selector: 'app-table',
   standalone: true,
@@ -9,7 +9,7 @@ import { DivisionListView } from '../leaflet-map/models/division.models';
 })
 export class TableComponent {
   @Input() tableTabType: string = '';
-  @Input() divisionsDataList: DivisionListView[] = [];
+  // @Input() divisionsDataList: DivisionListView[] = [];
 
   // @Input() brandsList: BrandListView[] = [];
   // @Input() marketSharesList: DivisionListView[] = [];
@@ -23,7 +23,7 @@ export class TableComponent {
   constructor() {}
 
   ngOnInit(): void {
-    console.log('this.divisionsDataList', this.divisionsDataList);
+    // console.log('this.divisionsDataList', this.divisionsDataList);
 
     // if (this.tableTabType === 'brands') {
     //   this.data = this.brandsList;
@@ -35,11 +35,11 @@ export class TableComponent {
     console.log('tableTabType table', this.tableTabType);
   }
 
-  showDistrictsHandler(division: DivisionListView) {
-    this.showDistrictsEvent.emit(division);
-    // Emits/Passing the selected division data to the parent component.
-    // Passing data from Child to Parent Component
-  }
+  // showDistrictsHandler(division: DivisionListView) {
+  //   this.showDistrictsEvent.emit(division);
+  //   Emits/Passing the selected division data to the parent component.
+  //   Passing data from Child to Parent Component
+  // }
 
   showBrandDetails(brandId: string) {
     console.log('brandId: ' + brandId);
@@ -47,11 +47,11 @@ export class TableComponent {
     // Emits/Passing the selected brand ID as a number to the parent component.
   }
 
-  formatNumber(value: number): string {
-    const formatter = new Intl.NumberFormat('en-US', {
-      maximumFractionDigits: 0,
-      minimumFractionDigits: 0,
-    });
-    return formatter.format(value);
-  }
+  // formatNumber(value: number): string {
+  //   const formatter = new Intl.NumberFormat('en-US', {
+  //     maximumFractionDigits: 0,
+  //     minimumFractionDigits: 0,
+  //   });
+  //   return formatter.format(value);
+  // }
 }
