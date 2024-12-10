@@ -8,35 +8,40 @@ interface VendorSuggestion {
   vendorName: string;
 }
 
+// Define a constant for the base API URL
+const BASE_API_URL = 'http://192.168.0.109:8083/api/';
+// const BASE_API_URL = 'http://192.168.0.172:8083/api/';
 @Injectable({
   providedIn: 'root',
 })
-
-
 export class PostService {
   // Base URLs for API endpoints
-  private apiUrl = 'http://192.168.0.172:8083/api/division/boundary?name=';
-  private genericUrl = 'http://192.168.0.172:8083/api/generic/search?prefix=';
-  private vendorUrl = 'http://192.168.0.172:8083/api/vendor/search?prefix=';
-  private demographicUrl = 'http://192.168.0.172:8083/api/sales-info/demographic';
+  private boundaryUrl = `${BASE_API_URL}division/boundary?name=`;
+  private genericUrl = `${BASE_API_URL}generic/search?prefix=`;
+  private vendorUrl = `${BASE_API_URL}vendor/search?prefix=`;
+  private demographicUrl = `${BASE_API_URL}sales-info/demographic`;
 
   constructor(private http: HttpClient) {}
-  //for boundary region
+
+  // For boundary region
   getPosts(name: string): Observable<any> {
-    const apiUrl = `${this.apiUrl}${name}`;
-    return this.http.get(apiUrl);
+    const boundaryUrl= `${this.boundaryUrl}${name}`;
+    return this.http.get(boundaryUrl);
   }
-  // for genericSuggestions
+
+  // For genericSuggestions
   getGenericSuggestions(query: string): Observable<any> {
     const url = `${this.genericUrl}${query}&limit=10`;
     return this.http.get(url);
   }
-  // for vendor suggestions
+
+  // For vendor suggestions
   getVendorSuggestions(query: string): Observable<VendorSuggestion[]> {
     const url = `${this.vendorUrl}${query}&limit=10`;
     return this.http.get<VendorSuggestion[]>(url);
   }
-  // for demographic
+
+  // For demographic
   getDemographicData(
     genericId: number,
     vendorId: number,
