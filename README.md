@@ -20,9 +20,14 @@
 # shows vendor suggestion through API call
 ![image](https://github.com/user-attachments/assets/c9b4f23c-3156-4df0-8a25-f47d76d974a5)
 
-# after demographic view
+# demographic view through API call
 ![image](https://github.com/user-attachments/assets/094e37fb-6e89-4acb-bb77-d68970c07640)
 
+# top brands view through API call
+![image](https://github.com/user-attachments/assets/f6021ed2-8c5b-4461-a3ba-8fa4158899d1)
+
+# market share view through API call
+![image](https://github.com/user-attachments/assets/692d1b91-7041-4447-97d6-e4a489a69e92)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
 
