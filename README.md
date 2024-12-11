@@ -24,10 +24,10 @@
 ![image](https://github.com/user-attachments/assets/094e37fb-6e89-4acb-bb77-d68970c07640)
 
 # top brands view through API call
-![image](https://github.com/user-attachments/assets/f6021ed2-8c5b-4461-a3ba-8fa4158899d1)
+![image](https://github.com/user-attachments/assets/c4ecd898-920b-4aef-b8cd-0120964272c1)
 
 # market share view through API call
-![image](https://github.com/user-attachments/assets/692d1b91-7041-4447-97d6-e4a489a69e92)
+![image](https://github.com/user-attachments/assets/59bf66c6-532d-4919-b29c-1007ab1ba9e7)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
 
