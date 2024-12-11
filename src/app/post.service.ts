@@ -22,8 +22,8 @@ interface MarketShare {
   salesPercentage: number;
 }
 
-// const BASE_API_URL = 'http://192.168.0.109:8083/api/';
-const BASE_API_URL = 'http://192.168.0.172:8083/api/';
+const BASE_API_URL = 'http://192.168.0.109:8083/api/';
+// const BASE_API_URL = 'http://192.168.0.172:8083/api/';
 @Injectable({
   providedIn: 'root',
 })

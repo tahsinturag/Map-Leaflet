@@ -26,7 +26,7 @@ interface MarketShare {
 })
 export class ShowResultsComponent implements OnInit {
   divisionsDataList: any[] = [];
-  topBrandsList: any[] = [];
+  topBrandsList: TopBrand[] = [];
   marketShareList: MarketShare[] = [];
   totalAmount: number = 0;
   activeTab: 'demographic' | 'topBrands' | 'marketShare' = 'demographic';
