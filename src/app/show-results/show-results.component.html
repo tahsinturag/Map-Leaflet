@@ -4,64 +4,55 @@
       <h4 class="title-style">Paracetamol</h4>
       <p class="date-style">01.01.2024-30.06.2024</p>
     </div>
-
     <div>
       <p class="total-sales">Total sales</p>
       <h3 class="total-amount">৳{{ totalAmount | number }}</h3>
     </div>
   </div>
-
   <!-- navbar Section -->
-  <div
-    class=" d-flex flex-column bg-white rounded-2 mt-4"
-    style="padding: 10px 10px"
-  >
-    <ul
-      class="nav nav-tabs justify-content-between"
-      id="myTab"
-      role="tablist"
-    >
+  <div class="d-flex flex-column bg-white rounded-2 mt-4" style="padding: 10px 10px">
+    <ul class="nav nav-tabs justify-content-between" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
-        <!-- Tab for demographic view -->
         <button
-          class="nav-link active"
+          class="nav-link {{ activeTab === 'demographic' ? 'active' : '' }}"
           id="tab1-btn"
           data-bs-toggle="tab"
           data-bs-target="#tab1"
           type="button"
           role="tab"
           aria-controls="tab1"
-          aria-selected="true"
+          [attr.aria-selected]="activeTab === 'demographic'"
+          (click)="onTabChange('demographic')"
         >
           Demographic
         </button>
       </li>
       <li class="nav-item" role="presentation">
-        <!-- Tab for top brands view -->
         <button
-          class="nav-link"
+          class="nav-link {{ activeTab === 'topBrands' ? 'active' : '' }}"
           id="tab2-btn"
           data-bs-toggle="tab"
           data-bs-target="#tab2"
           type="button"
           role="tab"
           aria-controls="tab2"
-          aria-selected="false"
+          [attr.aria-selected]="activeTab === 'topBrands'"
+          (click)="onTabChange('topBrands')"
         >
           Top Brands
         </button>
       </li>
       <li class="nav-item" role="presentation">
-        <!-- Tab for market share view -->
         <button
-          class="nav-link"
+          class="nav-link {{ activeTab === 'marketShare' ? 'active' : '' }}"
           id="tab3-btn"
           data-bs-toggle="tab"
           data-bs-target="#tab3"
           type="button"
           role="tab"
           aria-controls="tab3"
-          aria-selected="false"
+          [attr.aria-selected]="activeTab === 'marketShare'"
+          (click)="onTabChange('marketShare')"
         >
           Market Share
         </button>
@@ -71,23 +62,66 @@
 
   <!-- Dynamic Table -->
   <div class="flex-column bg-white rounded-2 mt-4" style="padding: 4px 2px">
+    <!-- Demographic Table -->
+    @if (activeTab === 'demographic') {
+      <table class="table table mt-3">
+        <thead>
+        <tr>
+          <th>Division</th>
+          <th>Amount (taka)</th>
+        </tr>
+        </thead>
+        <tbody>
+          @for (division of divisionsDataList; track division) {
+            <tr>
+              <td>{{ division.divisionName }}</td>
+              <td>৳{{ division.totalSales | number }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
 
-    <table class="table table mt-3">
-      <thead>
-      <tr>
-        <th>Division</th>
-        <th>Amount (taka)</th>
-      </tr>
-      </thead>
-      <tbody>
-      <!-- Table body shows dynamically -->
-        @for (division of divisionsDataList; track division) {
-          <tr>
-            <td>{{ division.divisionName }}</td>
-            <td>৳{{ division.totalSales | number }}</td>
-          </tr>
-        }
-      </tbody>
-    </table>
+    <!-- Top Brands Table -->
+    @if (activeTab === 'topBrands') {
+      <table class="table table mt-3">
+        <thead>
+        <tr>
+          <th>Drug Name</th>
+          <th>Total Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+          @for (brand of topBrandsList; track brand) {
+            <tr>
+              <td>{{ brand.drugName }}</td>
+              <td>৳{{ brand.totalAmount | number }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+
+    <!-- Market share Table -->
+    @if (activeTab === 'marketShare') {
+      <table class="table table mt-3">
+        <thead>
+        <tr>
+          <th>District Name</th>
+<!--          <th>Total Sales</th>-->
+          <th>Market Share (%)</th>
+        </tr>
+        </thead>
+        <tbody>
+          @for (item of marketShareList; track item) {
+            <tr>
+              <td>{{ item.districtName }}</td>
+<!--              <td>৳{{ item.totalSales | number }}</td>-->
+              <td>{{ item.salesPercentage | number:'1.2-2' }}%</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
   </div>
 </div>
